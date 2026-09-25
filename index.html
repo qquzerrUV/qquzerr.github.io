@@ -1,41 +1,390 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>qquzerr potfolio</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio — Skins & Renders</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <div class="profile">
-      <div class="logo">C</div>
-      <div class="info">
-        <h1>qquzerr potfolio</h1>
-        <p>3D / Illustration / Concept Art</p>
+  <!-- Animated background -->
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
+  <div class="bg-particles" id="particles"></div>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-logo">
+      <span class="logo-icon">◆</span>
+      <span class="logo-text">VOID<span class="accent">.CORE</span></span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#home" class="nav-link active">Главная</a></li>
+      <li><a href="#skins" class="nav-link">Скины</a></li>
+      <li><a href="#renders" class="nav-link">Рендеры</a></li>
+      <li><a href="#contact" class="nav-link">Контакты</a></li>
+    </ul>
+    <div class="nav-social">
+      <a href="https://discord.gg/yourinvite" target="_blank" class="social-btn" title="Discord">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+      </a>
+      <a href="https://t.me/yourusername" target="_blank" class="social-btn" title="Telegram">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+      </a>
+      <a href="https://x.com/yourusername" target="_blank" class="social-btn" title="X">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="pulse-dot"></span>
+        ONLINE
+      </div>
+      <h1 class="hero-title">
+        <span class="line">DIGITAL</span>
+        <span class="line accent-text">ARTIFACTS</span>
+      </h1>
+      <p class="hero-subtitle">
+        Скины • Рендеры • Визуальные эксперименты
+      </p>
+      <div class="hero-cta">
+        <a href="#skins" class="btn btn-primary">
+          <span>Смотреть скины</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#renders" class="btn btn-secondary">Рендеры</a>
       </div>
     </div>
-    <nav>
-      <a href="#">Discord</a>
-      <a href="#">Twitter</a>
-      <a href="#">Telegram</a>
-    </nav>
-  </header>
+    <div class="hero-visual">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+      <div class="hero-frame">
+        <div class="frame-corner tl"></div>
+        <div class="frame-corner tr"></div>
+        <div class="frame-corner bl"></div>
+        <div class="frame-corner br"></div>
+        <div class="frame-content">
+          <span class="frame-label">CORE_STATUS</span>
+          <span class="frame-value">ACTIVE</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <main class="grid">
-    <!-- Карточка 1: персонаж на бежевом фоне -->
-    <div class="card">
-      <img src="images/character1.png" alt="Character 1" />
+  <!-- Skins Section -->
+  <section id="skins" class="section">
+    <div class="section-header">
+      <div class="section-tag">01 // SKINS</div>
+      <h2 class="section-title">Скины</h2>
+      <p class="section-desc">Кастомные текстуры, weapon skins и визуальные модификации</p>
     </div>
-    <!-- Карточка 2: Оптимус на сером фоне -->
-    <div class="card">
-      <img src="images/optimus.png" alt="Optimus Prime" />
+
+    <div class="gallery skins-gallery">
+      <article class="card skin-card" data-index="01">
+        <div class="card-image">
+          <div class="placeholder-img skins-ph-1">
+            <span class="ph-icon">◆</span>
+          </div>
+          <div class="card-overlay">
+            <span class="view-btn">Открыть</span>
+          </div>
+        </div>
+        <div class="card-info">
+          <span class="card-num">01</span>
+          <h3 class="card-title">VOID EDGE</h3>
+          <p class="card-meta">Weapon Skin • 2025</p>
+        </div>
+      </article>
+
+      <article class="card skin-card" data-index="02">
+        <div class="card-image">
+          <div class="placeholder-img skins-ph-2">
+            <span class="ph-icon">◆</span>
+          </div>
+          <div class="card-overlay">
+            <span class="view-btn">Открыть</span>
+          </div>
+        </div>
+        <div class="card-info">
+          <span class="card-num">02</span>
+          <h3 class="card-title">EMBER CORE</h3>
+          <p class="card-meta">Character Skin • 2025</p>
+        </div>
+      </article>
+
+      <article class="card skin-card" data-index="03">
+        <div class="card-image">
+          <div class="placeholder-img skins-ph-3">
+            <span class="ph-icon">◆</span>
+          </div>
+          <div class="card-overlay">
+            <span class="view-btn">Открыть</span>
+          </div>
+        </div>
+        <div class="card-info">
+          <span class="card-num">03</span>
+          <h3 class="card-title">RUST PROTOCOL</h3>
+          <p class="card-meta">Weapon Skin • 2024</p>
+        </div>
+      </article>
+
+      <article class="card skin-card" data-index="04">
+        <div class="card-image">
+          <div class="placeholder-img skins-ph-4">
+            <span class="ph-icon">◆</span>
+          </div>
+          <div class="card-overlay">
+            <span class="view-btn">Открыть</span>
+          </div>
+        </div>
+        <div class="card-info">
+          <span class="card-num">04</span>
+          <h3 class="card-title">SOLAR FLARE</h3>
+          <p class="card-meta">Character Skin • 2024</p>
+        </div>
+      </article>
+
+      <article class="card skin-card" data-index="05">
+        <div class="card-image">
+          <div class="placeholder-img skins-ph-5">
+            <span class="ph-icon">◆</span>
+          </div>
+          <div class="card-overlay">
+            <span class="view-btn">Открыть</span>
+          </div>
+        </div>
+        <div class="card-info">
+          <span class="card-num">05</span>
+          <h3 class="card-title">NEON DECAY</h3>
+          <p class="card-meta">Weapon Skin • 2025</p>
+        </div>
+      </article>
+
+      <article class="card skin-card" data-index="06">
+        <div class="card-image">
+          <div class="placeholder-img skins-ph-6">
+            <span class="ph-icon">◆</span>
+          </div>
+          <div class="card-overlay">
+            <span class="view-btn">Открыть</span>
+          </div>
+        </div>
+        <div class="card-info">
+          <span class="card-num">06</span>
+          <h3 class="card-title">ASHEN GUARD</h3>
+          <p class="card-meta">Character Skin • 2024</p>
+        </div>
+      </article>
     </div>
-    <!-- Карточка 3: Бэтмен -->
-    <div class="card">
-      <img src="images/batman.png" alt="Batman" />
+  </section>
+
+  <!-- Renders Section -->
+  <section id="renders" class="section section-alt">
+    <div class="section-header">
+      <div class="section-tag">02 // RENDERS</div>
+      <h2 class="section-title">Рендеры</h2>
+      <p class="section-desc">3D-сцены, концепт-арты и визуальные исследования</p>
     </div>
-    <!-- Добавьте остальные карточки по аналогии -->
-  </main>
+
+    <div class="gallery renders-gallery">
+      <article class="card render-card wide" data-index="01">
+        <div class="card-image">
+          <div class="placeholder-img renders-ph-1">
+            <span class="ph-icon">◈</span>
+          </div>
+          <div class="card-overlay">
+            <span class="view-btn">Открыть</span>
+          </div>
+        </div>
+        <div class="card-info">
+          <span class="card-num">R-01</span>
+          <h3 class="card-title">ABYSS STATION</h3>
+          <p class="card-meta">Environment • Cycles • 4K</p>
+        </div>
+      </article>
+
+      <article class="card render-card" data-index="02">
+        <div class="card-image">
+          <div class="placeholder-img renders-ph-2">
+            <span class="ph-icon">◈</span>
+          </div>
+          <div class="card-overlay">
+            <span class="view-btn">Открыть</span>
+          </div>
+        </div>
+        <div class="card-info">
+          <span class="card-num">R-02</span>
+          <h3 class="card-title">ORANGE VOID</h3>
+          <p class="card-meta">Concept • 2025</p>
+        </div>
+      </article>
+
+      <article class="card render-card" data-index="03">
+        <div class="card-image">
+          <div class="placeholder-img renders-ph-3">
+            <span class="ph-icon">◈</span>
+          </div>
+          <div class="card-overlay">
+            <span class="view-btn">Открыть</span>
+          </div>
+        </div>
+        <div class="card-info">
+          <span class="card-num">R-03</span>
+          <h3 class="card-title">CORE REACTOR</h3>
+          <p class="card-meta">Hard Surface • 2024</p>
+        </div>
+      </article>
+
+      <article class="card render-card wide" data-index="04">
+        <div class="card-image">
+          <div class="placeholder-img renders-ph-4">
+            <span class="ph-icon">◈</span>
+          </div>
+          <div class="card-overlay">
+            <span class="view-btn">Открыть</span>
+          </div>
+        </div>
+        <div class="card-info">
+          <span class="card-num">R-04</span>
+          <h3 class="card-title">SOLAR DRIFT</h3>
+          <p class="card-meta">Environment • 8K</p>
+        </div>
+      </article>
+
+      <article class="card render-card" data-index="05">
+        <div class="card-image">
+          <div class="placeholder-img renders-ph-5">
+            <span class="ph-icon">◈</span>
+          </div>
+          <div class="card-overlay">
+            <span class="view-btn">Открыть</span>
+          </div>
+        </div>
+        <div class="card-info">
+          <span class="card-num">R-05</span>
+          <h3 class="card-title">FRAGMENT</h3>
+          <p class="card-meta">Abstract • 2025</p>
+        </div>
+      </article>
+
+      <article class="card render-card" data-index="06">
+        <div class="card-image">
+          <div class="placeholder-img renders-ph-6">
+            <span class="ph-icon">◈</span>
+          </div>
+          <div class="card-overlay">
+            <span class="view-btn">Открыть</span>
+          </div>
+        </div>
+        <div class="card-info">
+          <span class="card-num">R-06</span>
+          <h3 class="card-title">IRON GHOST</h3>
+          <p class="card-meta">Character • 2024</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Contact / Footer -->
+  <section id="contact" class="contact">
+    <div class="contact-inner">
+      <div class="contact-left">
+        <div class="section-tag">03 // CONNECT</div>
+        <h2 class="contact-title">Связь</h2>
+        <p class="contact-desc">Открыт к коллаборациям, заказам и просто интересным разговорам.</p>
+      </div>
+      <div class="contact-right">
+        <a href="https://discord.gg/yourinvite" target="_blank" class="contact-link">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+          </div>
+          <div class="contact-text">
+            <span class="contact-label">Discord</span>
+            <span class="contact-value">yourname#0000</span>
+          </div>
+          <svg class="arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="https://t.me/yourusername" target="_blank" class="contact-link">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+          </div>
+          <div class="contact-text">
+            <span class="contact-label">Telegram</span>
+            <span class="contact-value">@yourusername</span>
+          </div>
+          <svg class="arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="https://x.com/yourusername" target="_blank" class="contact-link">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </div>
+          <div class="contact-text">
+            <span class="contact-label">X (Twitter)</span>
+            <span class="contact-value">@yourusername</span>
+          </div>
+          <svg class="arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-line"></div>
+      <div class="footer-content">
+        <span class="footer-logo">VOID<span class="accent">.CORE</span></span>
+        <span class="footer-copy">© 2025 • Built for the void</span>
+      </div>
+    </footer>
+  </section>
+
+  <script>
+    // Simple particle background
+    const particlesContainer = document.getElementById('particles');
+    for (let i = 0; i < 40; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.style.left = Math.random() * 100 + '%';
+      p.style.top = Math.random() * 100 + '%';
+      p.style.animationDelay = Math.random() * 8 + 's';
+      p.style.animationDuration = (6 + Math.random() * 8) + 's';
+      particlesContainer.appendChild(p);
+    }
+
+    // Active nav link on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        if (scrollY >= sectionTop) current = section.getAttribute('id');
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+      });
+    });
+
+    // Smooth reveal on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.card, .section-header, .hero-content, .contact-inner').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
 </body>
 </html>
