@@ -321,8 +321,12 @@ a {
 
 .card.is-hovered .card-inner {
   border-radius: 14px;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65), 0 0 40px var(--orange-glow);
-  filter: brightness(1.08) contrast(1.05);
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.65),
+    0 0 28px rgba(255, 94, 0, 0.4),
+    0 0 55px rgba(255, 94, 0, 0.22);
+  filter: brightness(1.15) contrast(1.08) saturate(1.05);
+  isolation: isolate;
 }
 
 .placeholder {
