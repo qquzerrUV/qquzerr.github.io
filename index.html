@@ -12,8 +12,6 @@
 </head>
 <body>
 
-  <div class="page-dim" id="pageDim"></div>
-
   <div class="lightbox" id="lightbox">
     <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
     <div class="lightbox-hint">← → switch · Scroll zoom · Drag move · Esc close</div>
@@ -99,7 +97,6 @@
       window.scrollTo(0, 0);
     }
 
-    const dim = document.getElementById("pageDim");
     const lightbox = document.getElementById("lightbox");
     const lightboxImg = document.getElementById("lightboxImg");
     const lightboxStage = document.getElementById("lightboxStage");
@@ -117,12 +114,12 @@
       const inner = card.querySelector(".card-inner");
 
       card.addEventListener("mouseenter", () => {
-        dim.classList.add("active");
+        document.body.classList.add("gallery-focus");
         card.classList.add("is-hovered");
       });
 
       card.addEventListener("mouseleave", () => {
-        dim.classList.remove("active");
+        document.body.classList.remove("gallery-focus");
         card.classList.remove("is-hovered");
         inner.style.transform = "scale(1) translate(0px, 0px)";
       });
@@ -159,6 +156,7 @@
       lightboxImg.src = src;
       lightbox.classList.add("open");
       document.body.style.overflow = "hidden";
+      document.body.classList.remove("gallery-focus");
     }
 
     function closeLightbox() {
@@ -195,7 +193,7 @@
     lightbox.addEventListener("wheel", (e) => {
       if (!lightbox.classList.contains("open")) return;
       e.preventDefault();
-      scale = Math.min(Math.max(0.5, scale + (e.deltaY > 0 ? -0.15 : 0.15)), 5);
+      scale = Math.min(Math.max(1, scale + (e.deltaY > 0 ? -0.15 : 0.15)), 5);
       applyTransform();
     }, { passive: false });
 
@@ -244,7 +242,7 @@
         const dx = e.touches[0].clientX - e.touches[1].clientX;
         const dy = e.touches[0].clientY - e.touches[1].clientY;
         const dist = Math.hypot(dx, dy);
-        scale = Math.min(Math.max(0.5, scale + (dist - lastTouchDist) * 0.01), 5);
+        scale = Math.min(Math.max(1, scale + (dist - lastTouchDist) * 0.01), 5);
         lastTouchDist = dist;
         applyTransform();
       }
