@@ -12,11 +12,14 @@
 </head>
 <body>
 
+  <!-- Overlay that darkens everything on card hover -->
+  <div class="page-dim" id="pageDim"></div>
+
   <nav class="nav">
-    <a href="#home" class="logo">qquzerr - portfolio</a>
+    <a href="#home" class="logo">qquzerr</a>
     <div class="nav-links">
-      <a href="#skins">Скины</a>
-      <a href="#renders">Рендеры</a>
+      <a href="#skins">SKins</a>
+      <a href="#renders">Renders</a>
     </div>
     <div class="nav-social">
       <a href="https://discord.com/users/qquzerr" target="_blank" rel="noopener" aria-label="Discord">
@@ -34,7 +37,7 @@
   <header id="home" class="hero">
     <p class="hero-label">@qquzerr</p>
     <h1 class="hero-title">Skins<br>&amp; Renders</h1>
-    <p class="hero-sub">Кастомные скины и 3D-рендеры</p>
+    <p class="hero-sub">hello! I’m qquzerr, I make renders in the vanilla style and draw great skins!</p>
   </header>
 
   <!-- SKINS -->
@@ -44,59 +47,35 @@
       <h2>Skins</h2>
     </div>
     <div class="grid">
-      <article class="card">
-        <div class="card-img">
-          <!-- <img src="images/skin-01.jpg" alt="VOID EDGE"> -->
+      <article class="card" data-tilt>
+        <div class="card-inner">
+          <!-- <img src="images/skin-01.jpg" alt=""> -->
           <div class="placeholder"></div>
-        </div>
-        <div class="card-meta">
-          <h3>VOID EDGE</h3>
-          <span>Weapon Skin · 2025</span>
         </div>
       </article>
-      <article class="card">
-        <div class="card-img">
+      <article class="card" data-tilt>
+        <div class="card-inner">
           <div class="placeholder"></div>
-        </div>
-        <div class="card-meta">
-          <h3>EMBER CORE</h3>
-          <span>Character Skin · 2025</span>
         </div>
       </article>
-      <article class="card">
-        <div class="card-img">
+      <article class="card" data-tilt>
+        <div class="card-inner">
           <div class="placeholder"></div>
-        </div>
-        <div class="card-meta">
-          <h3>RUST PROTOCOL</h3>
-          <span>Weapon Skin · 2024</span>
         </div>
       </article>
-      <article class="card">
-        <div class="card-img">
+      <article class="card" data-tilt>
+        <div class="card-inner">
           <div class="placeholder"></div>
-        </div>
-        <div class="card-meta">
-          <h3>SOLAR FLARE</h3>
-          <span>Character Skin · 2024</span>
         </div>
       </article>
-      <article class="card">
-        <div class="card-img">
+      <article class="card" data-tilt>
+        <div class="card-inner">
           <div class="placeholder"></div>
-        </div>
-        <div class="card-meta">
-          <h3>NEON DECAY</h3>
-          <span>Weapon Skin · 2025</span>
         </div>
       </article>
-      <article class="card">
-        <div class="card-img">
+      <article class="card" data-tilt>
+        <div class="card-inner">
           <div class="placeholder"></div>
-        </div>
-        <div class="card-meta">
-          <h3>ASHEN GUARD</h3>
-          <span>Character Skin · 2024</span>
         </div>
       </article>
     </div>
@@ -106,61 +85,37 @@
   <section id="renders" class="section">
     <div class="section-head">
       <span class="section-num">02</span>
-      <h2>Рендеры</h2>
+      <h2>Renders</h2>
     </div>
     <div class="grid grid-renders">
-      <article class="card card-wide">
-        <div class="card-img">
+      <article class="card card-wide" data-tilt>
+        <div class="card-inner">
           <div class="placeholder"></div>
-        </div>
-        <div class="card-meta">
-          <h3>ABYSS STATION</h3>
-          <span>Environment · 4K</span>
         </div>
       </article>
-      <article class="card">
-        <div class="card-img">
+      <article class="card" data-tilt>
+        <div class="card-inner">
           <div class="placeholder"></div>
-        </div>
-        <div class="card-meta">
-          <h3>ORANGE VOID</h3>
-          <span>Concept · 2025</span>
         </div>
       </article>
-      <article class="card">
-        <div class="card-img">
+      <article class="card" data-tilt>
+        <div class="card-inner">
           <div class="placeholder"></div>
-        </div>
-        <div class="card-meta">
-          <h3>CORE REACTOR</h3>
-          <span>Hard Surface · 2024</span>
         </div>
       </article>
-      <article class="card card-wide">
-        <div class="card-img">
+      <article class="card card-wide" data-tilt>
+        <div class="card-inner">
           <div class="placeholder"></div>
-        </div>
-        <div class="card-meta">
-          <h3>SOLAR DRIFT</h3>
-          <span>Environment · 8K</span>
         </div>
       </article>
-      <article class="card">
-        <div class="card-img">
+      <article class="card" data-tilt>
+        <div class="card-inner">
           <div class="placeholder"></div>
-        </div>
-        <div class="card-meta">
-          <h3>FRAGMENT</h3>
-          <span>Abstract · 2025</span>
         </div>
       </article>
-      <article class="card">
-        <div class="card-img">
+      <article class="card" data-tilt>
+        <div class="card-inner">
           <div class="placeholder"></div>
-        </div>
-        <div class="card-meta">
-          <h3>IRON GHOST</h3>
-          <span>Character · 2024</span>
         </div>
       </article>
     </div>
@@ -168,6 +123,7 @@
 
   <!-- CONTACT -->
   <section id="contact" class="contact">
+    <div class="contact-inner">
       <div class="contact-links">
         <a href="https://discord.com/users/qquzerr" target="_blank" rel="noopener">Discord · @qquzerr</a>
         <a href="https://t.me/qquzerr" target="_blank" rel="noopener">Telegram · @qquzerr</a>
@@ -180,5 +136,40 @@
     </footer>
   </section>
 
+  <script>
+    if (!window.location.hash) {
+      history.scrollRestoration = "manual";
+      window.scrollTo(0, 0);
+    }
+
+    const dim = document.getElementById("pageDim");
+    const cards = document.querySelectorAll("[data-tilt]");
+
+    cards.forEach((card) => {
+      const inner = card.querySelector(".card-inner");
+
+      card.addEventListener("mouseenter", () => {
+        dim.classList.add("active");
+        card.classList.add("is-hovered");
+      });
+
+      card.addEventListener("mouseleave", () => {
+        dim.classList.remove("active");
+        card.classList.remove("is-hovered");
+        inner.style.transform = "scale(1) translate(0, 0)";
+      });
+
+      card.addEventListener("mousemove", (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const moveX = ((x - centerX) / centerX) * 12;
+        const moveY = ((y - centerY) / centerY) * 12;
+        inner.style.transform = `scale(1.08) translate(${moveX}px, ${moveY}px)`;
+      });
+    });
+  </script>
 </body>
 </html>
