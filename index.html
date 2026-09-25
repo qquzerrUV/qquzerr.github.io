@@ -12,8 +12,12 @@
 </head>
 <body>
 
-  <!-- Overlay that darkens everything on card hover -->
   <div class="page-dim" id="pageDim"></div>
+
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+    <img src="" alt="" id="lightboxImg">
+  </div>
 
   <nav class="nav">
     <a href="#home" class="logo">qquzerr</a>
@@ -40,7 +44,6 @@
     <p class="hero-sub">hello! I’m qquzerr, I make renders in the vanilla style and draw great skins!</p>
   </header>
 
-  <!-- SKINS -->
   <section id="skins" class="section">
     <div class="section-head">
       <h2>Skins</h2>
@@ -53,34 +56,23 @@
         </div>
       </article>
       <article class="card" data-tilt>
-        <div class="card-inner">
-          <div class="placeholder"></div>
-        </div>
+        <div class="card-inner"><div class="placeholder"></div></div>
       </article>
       <article class="card" data-tilt>
-        <div class="card-inner">
-          <div class="placeholder"></div>
-        </div>
+        <div class="card-inner"><div class="placeholder"></div></div>
       </article>
       <article class="card" data-tilt>
-        <div class="card-inner">
-          <div class="placeholder"></div>
-        </div>
+        <div class="card-inner"><div class="placeholder"></div></div>
       </article>
       <article class="card" data-tilt>
-        <div class="card-inner">
-          <div class="placeholder"></div>
-        </div>
+        <div class="card-inner"><div class="placeholder"></div></div>
       </article>
       <article class="card" data-tilt>
-        <div class="card-inner">
-          <div class="placeholder"></div>
-        </div>
+        <div class="card-inner"><div class="placeholder"></div></div>
       </article>
     </div>
   </section>
 
-  <!-- RENDERS -->
   <section id="renders" class="section">
     <div class="section-head">
       <h2>Renders</h2>
@@ -107,19 +99,14 @@
         </div>
       </article>
       <article class="card" data-tilt>
-        <div class="card-inner">
-          <div class="placeholder"></div>
-        </div>
+        <div class="card-inner"><div class="placeholder"></div></div>
       </article>
       <article class="card" data-tilt>
-        <div class="card-inner">
-          <div class="placeholder"></div>
-        </div>
+        <div class="card-inner"><div class="placeholder"></div></div>
       </article>
     </div>
   </section>
 
-  <!-- CONTACT -->
   <section id="contact" class="contact">
     <div class="contact-inner">
       <div class="contact-links">
@@ -141,6 +128,9 @@
     }
 
     const dim = document.getElementById("pageDim");
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightboxImg");
+    const lightboxClose = document.getElementById("lightboxClose");
     const cards = document.querySelectorAll("[data-tilt]");
 
     cards.forEach((card) => {
@@ -154,19 +144,40 @@
       card.addEventListener("mouseleave", () => {
         dim.classList.remove("active");
         card.classList.remove("is-hovered");
-        inner.style.transform = "scale(1) translate(0, 0)";
+        inner.style.transform = "scale(1) translate(0px, 0px)";
       });
 
       card.addEventListener("mousemove", (e) => {
         const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        const moveX = ((x - centerX) / centerX) * 12;
-        const moveY = ((y - centerY) / centerY) * 12;
-        inner.style.transform = `scale(1.08) translate(${moveX}px, ${moveY}px)`;
+        const moveX = ((x - rect.width / 2) / (rect.width / 2)) * 14;
+        const moveY = ((y - rect.height / 2) / (rect.height / 2)) * 14;
+        inner.style.transform = `scale(1.12) translate(${moveX}px, ${moveY}px)`;
       });
+
+      card.addEventListener("click", () => {
+        const img = inner.querySelector("img");
+        if (img && img.src) {
+          lightboxImg.src = img.src;
+          lightbox.classList.add("open");
+          document.body.style.overflow = "hidden";
+        }
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove("open");
+      document.body.style.overflow = "";
+      lightboxImg.src = "";
+    }
+
+    lightboxClose.addEventListener("click", closeLightbox);
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeLightbox();
     });
   </script>
 </body>
