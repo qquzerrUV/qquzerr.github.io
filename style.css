@@ -1,0 +1,107 @@
+/* Общие настройки */
+body {
+  background-color: #1a1a1a; /* Тёмный фон страницы */
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  margin: 0;
+  padding: 40px 20px;
+}
+
+/* Центрируем контент по центру */
+.container, header, main {
+  max-width: 1100px; /* Ограничение ширины, чтобы сетка не растягивалась слишком сильно */
+  margin: 0 auto;
+}
+
+/* Шапка сайта */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  flex-wrap: wrap; /* Чтобы меню переносилось на мобильных */
+  gap: 20px;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Иконка "C" в логотипе */
+.logo {
+  width: 45px;
+  height: 45px;
+  background: linear-gradient(135deg, #b06ab3, #4568dc); /* Градиент как на скриншоте */
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.info h1 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.info p {
+  margin: 3px 0 0;
+  font-size: 13px;
+  color: #aaa; /* Серый цвет для подзаголовка */
+}
+
+nav a {
+  color: #aaa;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: white;
+}
+
+/* Сетка для карточек */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Три колонки */
+  gap: 20px; /* Отступы между карточками */
+}
+
+/* Стили для одной карточки */
+.card {
+  background-color: #dcd3c6; /* Цвет фона, как на скриншоте */
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1 / 1; /* Делаем карточку квадратной */
+  padding: 20px;
+}
+
+/* Настройка картинки внутри карточки */
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Картинка сохраняет пропорции и полностью видна */
+}
+
+/* Адаптивность: на мобильных делаем одну колонку */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  nav a {
+    margin-left: 0;
+    margin-right: 15px;
+  }
+}
