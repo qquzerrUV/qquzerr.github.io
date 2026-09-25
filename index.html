@@ -16,7 +16,10 @@
 
   <div class="lightbox" id="lightbox">
     <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
-    <img src="" alt="" id="lightboxImg">
+    <div class="lightbox-hint">Scroll to zoom · Drag to move · Esc to close</div>
+    <div class="lightbox-stage" id="lightboxStage">
+      <img src="" alt="" id="lightboxImg">
+    </div>
   </div>
 
   <nav class="nav">
@@ -50,10 +53,7 @@
     </div>
     <div class="grid">
       <article class="card" data-tilt>
-        <div class="card-inner">
-          <!-- <img src="images/skin-01.jpg" alt=""> -->
-          <div class="placeholder"></div>
-        </div>
+        <div class="card-inner"><div class="placeholder"></div></div>
       </article>
       <article class="card" data-tilt>
         <div class="card-inner"><div class="placeholder"></div></div>
@@ -130,6 +130,7 @@
     const dim = document.getElementById("pageDim");
     const lightbox = document.getElementById("lightbox");
     const lightboxImg = document.getElementById("lightboxImg");
+    const lightboxStage = document.getElementById("lightboxStage");
     const lightboxClose = document.getElementById("lightboxClose");
     const cards = document.querySelectorAll("[data-tilt]");
 
@@ -158,27 +159,98 @@
 
       card.addEventListener("click", () => {
         const img = inner.querySelector("img");
-        if (img && img.src) {
-          lightboxImg.src = img.src;
-          lightbox.classList.add("open");
-          document.body.style.overflow = "hidden";
-        }
+        if (img && img.src) openLightbox(img.src);
       });
     });
+
+    let scale = 1, posX = 0, posY = 0, isDragging = false, startX = 0, startY = 0;
+
+    function applyTransform() {
+      lightboxImg.style.transform = `translate(${posX}px, ${posY}px) scale(${scale})`;
+    }
+
+    function openLightbox(src) {
+      scale = 1; posX = 0; posY = 0;
+      applyTransform();
+      lightboxImg.src = src;
+      lightbox.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
 
     function closeLightbox() {
       lightbox.classList.remove("open");
       document.body.style.overflow = "";
       lightboxImg.src = "";
+      scale = 1; posX = 0; posY = 0;
     }
 
     lightboxClose.addEventListener("click", closeLightbox);
     lightbox.addEventListener("click", (e) => {
-      if (e.target === lightbox) closeLightbox();
+      if (e.target === lightbox || e.target === lightboxStage) closeLightbox();
     });
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") closeLightbox();
     });
+
+    lightbox.addEventListener("wheel", (e) => {
+      if (!lightbox.classList.contains("open")) return;
+      e.preventDefault();
+      scale = Math.min(Math.max(0.5, scale + (e.deltaY > 0 ? -0.15 : 0.15)), 5);
+      applyTransform();
+    }, { passive: false });
+
+    lightboxImg.addEventListener("mousedown", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      isDragging = true;
+      startX = e.clientX - posX;
+      startY = e.clientY - posY;
+      lightboxImg.style.cursor = "grabbing";
+    });
+
+    window.addEventListener("mousemove", (e) => {
+      if (!isDragging) return;
+      posX = e.clientX - startX;
+      posY = e.clientY - startY;
+      applyTransform();
+    });
+
+    window.addEventListener("mouseup", () => {
+      isDragging = false;
+      lightboxImg.style.cursor = "grab";
+    });
+
+    let lastTouchDist = 0;
+    lightboxImg.addEventListener("touchstart", (e) => {
+      if (e.touches.length === 1) {
+        isDragging = true;
+        startX = e.touches[0].clientX - posX;
+        startY = e.touches[0].clientY - posY;
+      } else if (e.touches.length === 2) {
+        isDragging = false;
+        const dx = e.touches[0].clientX - e.touches[1].clientX;
+        const dy = e.touches[0].clientY - e.touches[1].clientY;
+        lastTouchDist = Math.hypot(dx, dy);
+      }
+    }, { passive: true });
+
+    lightboxImg.addEventListener("touchmove", (e) => {
+      e.preventDefault();
+      if (e.touches.length === 1 && isDragging) {
+        posX = e.touches[0].clientX - startX;
+        posY = e.touches[0].clientY - startY;
+        applyTransform();
+      } else if (e.touches.length === 2) {
+        const dx = e.touches[0].clientX - e.touches[1].clientX;
+        const dy = e.touches[0].clientY - e.touches[1].clientY;
+        const dist = Math.hypot(dx, dy);
+        scale = Math.min(Math.max(0.5, scale + (dist - lastTouchDist) * 0.01), 5);
+        lastTouchDist = dist;
+        applyTransform();
+      }
+    }, { passive: false });
+
+    lightboxImg.addEventListener("touchend", () => { isDragging = false; });
   </script>
 </body>
 </html>
