@@ -16,7 +16,7 @@
 
   <div class="lightbox" id="lightbox">
     <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
-    <div class="lightbox-hint">Scroll to zoom · Drag to move · Esc to close</div>
+    <div class="lightbox-hint">← → switch · Scroll zoom · Drag move · Esc close</div>
     <div class="lightbox-stage" id="lightboxStage">
       <img src="" alt="" id="lightboxImg">
     </div>
@@ -48,62 +48,34 @@
   </header>
 
   <section id="skins" class="section">
-    <div class="section-head">
-      <h2>Skins</h2>
-    </div>
+    <div class="section-head"><h2>Skins</h2></div>
     <div class="grid">
-      <article class="card" data-tilt>
-        <div class="card-inner"><div class="placeholder"></div></div>
-      </article>
-      <article class="card" data-tilt>
-        <div class="card-inner"><div class="placeholder"></div></div>
-      </article>
-      <article class="card" data-tilt>
-        <div class="card-inner"><div class="placeholder"></div></div>
-      </article>
-      <article class="card" data-tilt>
-        <div class="card-inner"><div class="placeholder"></div></div>
-      </article>
-      <article class="card" data-tilt>
-        <div class="card-inner"><div class="placeholder"></div></div>
-      </article>
-      <article class="card" data-tilt>
-        <div class="card-inner"><div class="placeholder"></div></div>
-      </article>
+      <article class="card" data-tilt><div class="card-inner"><div class="placeholder"></div></div></article>
+      <article class="card" data-tilt><div class="card-inner"><div class="placeholder"></div></div></article>
+      <article class="card" data-tilt><div class="card-inner"><div class="placeholder"></div></div></article>
+      <article class="card" data-tilt><div class="card-inner"><div class="placeholder"></div></div></article>
+      <article class="card" data-tilt><div class="card-inner"><div class="placeholder"></div></div></article>
+      <article class="card" data-tilt><div class="card-inner"><div class="placeholder"></div></div></article>
     </div>
   </section>
 
   <section id="renders" class="section">
-    <div class="section-head">
-      <h2>Renders</h2>
-    </div>
+    <div class="section-head"><h2>Renders</h2></div>
     <div class="grid grid-renders">
       <article class="card card-wide" data-tilt>
-        <div class="card-inner">
-          <img src="images/render-01.png" alt="">
-        </div>
+        <div class="card-inner"><img src="images/render-01.png" alt=""></div>
       </article>
       <article class="card" data-tilt>
-        <div class="card-inner">
-          <img src="images/render-02.png" alt="">
-        </div>
+        <div class="card-inner"><img src="images/render-02.png" alt=""></div>
       </article>
       <article class="card" data-tilt>
-        <div class="card-inner">
-          <img src="images/render-03.png" alt="">
-        </div>
+        <div class="card-inner"><img src="images/render-03.png" alt=""></div>
       </article>
       <article class="card card-wide" data-tilt>
-        <div class="card-inner">
-          <img src="images/render-04.png" alt="">
-        </div>
+        <div class="card-inner"><img src="images/render-04.png" alt=""></div>
       </article>
-      <article class="card" data-tilt>
-        <div class="card-inner"><div class="placeholder"></div></div>
-      </article>
-      <article class="card" data-tilt>
-        <div class="card-inner"><div class="placeholder"></div></div>
-      </article>
+      <article class="card" data-tilt><div class="card-inner"><div class="placeholder"></div></div></article>
+      <article class="card" data-tilt><div class="card-inner"><div class="placeholder"></div></div></article>
     </div>
   </section>
 
@@ -134,6 +106,13 @@
     const lightboxClose = document.getElementById("lightboxClose");
     const cards = document.querySelectorAll("[data-tilt]");
 
+    const gallerySrcs = [];
+    cards.forEach((card) => {
+      const img = card.querySelector(".card-inner img");
+      if (img && img.getAttribute("src")) gallerySrcs.push(img.src);
+    });
+    let currentIndex = 0;
+
     cards.forEach((card) => {
       const inner = card.querySelector(".card-inner");
 
@@ -150,22 +129,27 @@
 
       card.addEventListener("mousemove", (e) => {
         const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const moveX = ((x - rect.width / 2) / (rect.width / 2)) * 14;
-        const moveY = ((y - rect.height / 2) / (rect.height / 2)) * 14;
+        const moveX = ((e.clientX - rect.left - rect.width / 2) / (rect.width / 2)) * 14;
+        const moveY = ((e.clientY - rect.top - rect.height / 2) / (rect.height / 2)) * 14;
         inner.style.transform = `scale(1.12) translate(${moveX}px, ${moveY}px)`;
       });
 
       card.addEventListener("click", () => {
         const img = inner.querySelector("img");
-        if (img && img.src) openLightbox(img.src);
+        if (img && img.src) {
+          currentIndex = Math.max(0, gallerySrcs.indexOf(img.src));
+          openLightbox(img.src);
+        }
       });
     });
 
     let scale = 1, posX = 0, posY = 0, isDragging = false, startX = 0, startY = 0;
 
     function applyTransform() {
+      const maxX = (lightboxImg.offsetWidth * scale) * 0.4;
+      const maxY = (lightboxImg.offsetHeight * scale) * 0.4;
+      posX = Math.min(Math.max(posX, -maxX), maxX);
+      posY = Math.min(Math.max(posY, -maxY), maxY);
       lightboxImg.style.transform = `translate(${posX}px, ${posY}px) scale(${scale})`;
     }
 
@@ -184,12 +168,28 @@
       scale = 1; posX = 0; posY = 0;
     }
 
+    function showNext() {
+      if (!gallerySrcs.length) return;
+      currentIndex = (currentIndex + 1) % gallerySrcs.length;
+      openLightbox(gallerySrcs[currentIndex]);
+    }
+
+    function showPrev() {
+      if (!gallerySrcs.length) return;
+      currentIndex = (currentIndex - 1 + gallerySrcs.length) % gallerySrcs.length;
+      openLightbox(gallerySrcs[currentIndex]);
+    }
+
     lightboxClose.addEventListener("click", closeLightbox);
     lightbox.addEventListener("click", (e) => {
       if (e.target === lightbox || e.target === lightboxStage) closeLightbox();
     });
+
     document.addEventListener("keydown", (e) => {
+      if (!lightbox.classList.contains("open")) return;
       if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowRight") { e.preventDefault(); showNext(); }
+      if (e.key === "ArrowLeft") { e.preventDefault(); showPrev(); }
     });
 
     lightbox.addEventListener("wheel", (e) => {
